@@ -13,7 +13,8 @@ class Widget:
         self.df = pd.read_csv("schedule.csv", index_col=False) if os.path.exists('schedule.csv') else False
         self.front_frame = ttk.Frame(self.root)
         self.back_frame = ttk.Frame(self.root)
-        self.remaining_time = (30*60) 
+        self.remaining_time = 1800 
+        self.original_time = 1800
         self.gui()
         self.front_text()
         self.back_text()
@@ -74,10 +75,12 @@ class Widget:
         self.schedule()
 
     def front_text(self):
+        text = "Read oop in c++ \nor 6502 processor\n instructions" if self.original_time == 1800 else "Take a break "
         self.timer_label = ttk.Label(self.front_frame, text="00:00", font=("Helvetica", 24), foreground="white", background="black")
-        #self.example = ttk.Label(self.front_frame, text="hello", font=("Helvetica", 14), foreground="white", background="black")
+        self.example = ttk.Label(self.front_frame, text=text, font=("Helvetica", 11), foreground="white", background="black")
         self.timer_label.pack()
-        #self.example.pack()
+        self.example.pack()
+        self.example.configure(background="black")
         # pady=10
 
     def show_front(self):
@@ -107,7 +110,12 @@ class Widget:
         
         if self.remaining_time < 0:
             # Stop the timer
-            self.remaining_time = 0
+            if self.original_time == 1800:
+                self.remaining_time = 900
+                self.original_time = 900
+            else:
+                self.remaining_time = 1800
+                self.original_time = 1800
 
 if __name__ == "__main__":
     root = tk.Tk()
