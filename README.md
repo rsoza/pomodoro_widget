@@ -8,6 +8,17 @@ The Pomodoro Widget project aims to address these needs by providing a fixed Pom
 
 Currently, this project is a work in progress (WIP). While the basic functionality of the timer is implemented, it lacks the feature to dynamically set the task information. The timer is manually set within the code without associating it with specific tasks.
 
+### Highlighted Abilities
+
+In developing this project, I've demonstrated proficiency in the following areas:
+
+- **GUI Development**: Utilizing Tkinter by creating a graphical user interface (GUI) for the Pomodoro Widget, allowing for an intuitive user experience.
+
+- **Object-Oriented Programming (OOP)**: By structuring the codebase around classes, such as the `Widget` and `Interface` class, I've applied principles of object-oriented programming to enhance modularity and maintainability.
+
+- **Time Manipulation**: Leveraging the `time` and `datetime` modules, I've implemented timer functionality, enabling accurate tracking of task durations and countdowns.
+
+
 ## How to Contribute
 
 If you're interested in contributing to this project, here are some ideas to consider:
@@ -29,5 +40,5 @@ To get started with this project:
 4. Test the application to see the changes in action.
 5. Submit pull requests with your contributions or suggestions for improvements.
 
-Let's work together to create a Pomodoro Widget that helps others stay productive and focused.
+Contact me if you want to brainstorm [email](mailto:rsoza02@outlook.com) or [LinkedIn](https://www.linkedin.com/in/rebecca-soza-74531a2b4/).
 

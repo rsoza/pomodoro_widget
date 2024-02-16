@@ -4,9 +4,10 @@ import time
 from datetime import datetime
 import pandas as pd
 import os
+from interface import Interface
 
 
-class Widget:
+class Widget(Interface):
     def __init__(self, root):
         self.root = root
         # TODO: make this relatable to timer
@@ -21,21 +22,9 @@ class Widget:
         self.back_text()
         self.show_front()
         self.start_timer()
-        self.schedule()
+        self.schedule()     
 
-       
 
-    def gui(self):
-        self.root.title("Widget")
-        screen_width = self.root.winfo_screenwidth()
-        screen_height = self.root.winfo_screenheight()
-        window_width = 200
-        window_height = 100
-        self.root.geometry(f"{window_width}x{window_height}+{screen_width - window_width - 10}+{screen_height - window_height - 30}")
-        self.root.overrideredirect(True)
-        self.root.resizable(False, False)
-        self.root.attributes('-topmost', True)
-        self.root.configure(bg="black")
 
     def schedule(self):
         if type(self.df) == bool:
