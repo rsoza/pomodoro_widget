@@ -1,10 +1,9 @@
 
-from tkinter import ttk
-import time
+from interface import Interface
 from datetime import datetime
 import pandas as pd
+import time
 import os
-from interface import Interface
 
 class Widget(Interface):
     def __init__(self, root):
@@ -53,6 +52,11 @@ class Widget(Interface):
         self.df = pd.read_csv("schedule.csv", index_col=False) 
         print(self.df) 
         self.schedule()
+
+    def start_timer(self):
+        self.update_timer()
+        self.root.after(1000, self.start_timer)
+
    
     def update_timer(self):
         minutes, seconds = divmod(self.remaining_time, 60)
