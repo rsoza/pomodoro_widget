@@ -1,4 +1,4 @@
-import tkinter as tk
+
 from tkinter import ttk
 import time
 from datetime import datetime
@@ -13,8 +13,9 @@ class Widget:
         self.df = pd.read_csv("schedule.csv", index_col=False) if os.path.exists('schedule.csv') else False
         self.front_frame = ttk.Frame(self.root)
         self.back_frame = ttk.Frame(self.root)
-        self.remaining_time = 1800 
+        self.remaining_time = 1800
         self.original_time = 1800
+        self.text = "Read oop in c++ \nor 6502 processor\n instructions"
         self.gui()
         self.front_text()
         self.back_text()
@@ -25,16 +26,16 @@ class Widget:
        
 
     def gui(self):
-        root.title("Widget")
-        screen_width = root.winfo_screenwidth()
-        screen_height = root.winfo_screenheight()
+        self.root.title("Widget")
+        screen_width = self.root.winfo_screenwidth()
+        screen_height = self.root.winfo_screenheight()
         window_width = 200
         window_height = 100
-        root.geometry(f"{window_width}x{window_height}+{screen_width - window_width - 10}+{screen_height - window_height - 30}")
-        root.overrideredirect(True)
-        root.resizable(False, False)
-        root.attributes('-topmost', True)
-        root.configure(bg="black")
+        self.root.geometry(f"{window_width}x{window_height}+{screen_width - window_width - 10}+{screen_height - window_height - 30}")
+        self.root.overrideredirect(True)
+        self.root.resizable(False, False)
+        self.root.attributes('-topmost', True)
+        self.root.configure(bg="black")
 
     def schedule(self):
         if type(self.df) == bool:
@@ -75,9 +76,9 @@ class Widget:
         self.schedule()
 
     def front_text(self):
-        text = "Read oop in c++ \nor 6502 processor\n instructions" if self.original_time == 1800 else "Take a break "
+        
         self.timer_label = ttk.Label(self.front_frame, text="00:00", font=("Helvetica", 24), foreground="white", background="black")
-        self.example = ttk.Label(self.front_frame, text=text, font=("Helvetica", 11), foreground="white", background="black")
+        self.example = ttk.Label(self.front_frame, text=self.text, font=("Helvetica", 11), foreground="white", background="black")
         self.timer_label.pack()
         self.example.pack()
         self.example.configure(background="black")
@@ -113,15 +114,9 @@ class Widget:
             if self.original_time == 1800:
                 self.remaining_time = 900
                 self.original_time = 900
+                self.text = "Take a break"
             else:
                 self.remaining_time = 1800
                 self.original_time = 1800
+                self.text = "Read oop or 6502"
 
-if __name__ == "__main__":
-    root = tk.Tk()
-    app = Widget(root)
-
-    # Bind mouse click event to flip between front and back
-    root.bind("<Button-1>", lambda event: app.show_back() if app.front_frame.winfo_ismapped() else app.show_front())
-
-    root.mainloop()
